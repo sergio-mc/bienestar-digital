@@ -1,0 +1,6 @@
+framework module Pods_bienestar_digital {
+  umbrella header "Pods-bienestar_digital-umbrella.h"
+
+  export *
+  module * { export * }
+}
