@@ -27,6 +27,7 @@
 		CEBD6AFA23A7DBDD004A0368 /* bienestar_digitalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD6AF923A7DBDD004A0368 /* bienestar_digitalTests.swift */; };
 		CEBD6B0523A7DBDD004A0368 /* bienestar_digitalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD6B0423A7DBDD004A0368 /* bienestar_digitalUITests.swift */; };
 		CECBAE3C23C734F700E24B98 /* UiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBAE3B23C734F700E24B98 /* UiViewController.swift */; };
+		CECFAC9923F1E09C00FEEB89 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFAC9823F1E09C00FEEB89 /* MapViewController.swift */; };
 		D8A7B1B7157E806133BB444E /* Pods_bienestar_digitalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2360D9A09F43D3C16B921B /* Pods_bienestar_digitalTests.framework */; };
 		EFABB35CFCADB4CCEE177DE9 /* Pods_bienestar_digital.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC0A82300756CF691DF240C1 /* Pods_bienestar_digital.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		CEBD6B0423A7DBDD004A0368 /* bienestar_digitalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bienestar_digitalUITests.swift; sourceTree = "<group>"; };
 		CEBD6B0623A7DBDD004A0368 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CECBAE3B23C734F700E24B98 /* UiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiViewController.swift; sourceTree = "<group>"; };
+		CECFAC9823F1E09C00FEEB89 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D371EF2B0409C4ECB5E6FC9F /* Pods-bienestar_digital.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bienestar_digital.release.xcconfig"; path = "Target Support Files/Pods-bienestar_digital/Pods-bienestar_digital.release.xcconfig"; sourceTree = "<group>"; };
 		D586471E17602A4180F63DBF /* Pods_bienestar_digital_bienestar_digitalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bienestar_digital_bienestar_digitalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F72F9CFD0A6D252CCFEE91EB /* Pods-bienestar_digital.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bienestar_digital.debug.xcconfig"; path = "Target Support Files/Pods-bienestar_digital/Pods-bienestar_digital.debug.xcconfig"; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				CE0F370A23E2029600D7189B /* AppTableViewController.swift */,
 				CE0BDC1823EF476900BC69EB /* AppsCollectionViewController.swift */,
 				CE0BDC1A23EF47FE00BC69EB /* AppsCollectionViewControllerCell.swift */,
+				CECFAC9823F1E09C00FEEB89 /* MapViewController.swift */,
 			);
 			path = bienestar_digital;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				CE0BDC1923EF476900BC69EB /* AppsCollectionViewController.swift in Sources */,
 				CEA699C523DF7439000FD870 /* RecoverPageViewController.swift in Sources */,
 				CEA699C723DF7471000FD870 /* LoginPageViewController.swift in Sources */,
+				CECFAC9923F1E09C00FEEB89 /* MapViewController.swift in Sources */,
 				CEA699C323DF73F6000FD870 /* RegisterPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
