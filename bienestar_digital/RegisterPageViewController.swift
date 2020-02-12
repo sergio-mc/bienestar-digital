@@ -16,7 +16,6 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var userConfirmPassword: SkyFloatingLabelTextField!
     
-    @IBOutlet weak var userAgeTF: UISwitch!
     
     
     override func viewDidLoad() {
@@ -74,7 +73,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         let repeatedPassword = userConfirmPassword.text
         
         // Check for empty fields
-        if(userEmail!.isEmpty || userPassword!.isEmpty || userName!.isEmpty || repeatedPassword!.isEmpty || !userAgeTF.isOn)
+        if(userEmail!.isEmpty || userPassword!.isEmpty || userName!.isEmpty || repeatedPassword!.isEmpty)
         {
             // Alert message
             self.present(DataHelpers.displayAlert(userMessage: "All fields are required", alertType: 0), animated: true, completion: nil)
@@ -84,7 +83,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         } else {
             
             //Validation of email and password, CAMBIAR ESTO A UN METODO QUE VALIDE TODO
-            if ( DataHelpers.isValidPassword(userPassword!) && DataHelpers.isValidEmail(userEmail!) && DataHelpers.isUsernameValid(userName!) && userAgeTF.isOn){
+            if ( DataHelpers.isValidPassword(userPassword!) && DataHelpers.isValidEmail(userEmail!) && DataHelpers.isUsernameValid(userName!)){
                 
                 //Validation of passwords
                 createUser(email: userEmail!,password: userPassword!,userName: userName!)

@@ -12,6 +12,8 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
     
     let apps = ["instagram","whatsapp","facebook","chrome","gmail","reloj"]
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = appTableView.dequeueReusableCell(withIdentifier: "AppCell") as? AppTableViewCell
         

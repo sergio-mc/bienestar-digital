@@ -35,6 +35,11 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
         
         setupSliders()
         
+        
+        
+        DataHelpers.loadFile()
+        print(DataHelpers.parseCsvData())
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
