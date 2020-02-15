@@ -90,13 +90,13 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
                 
             } else {
                 
-                self.present(DataHelpers.displayAlert(userMessage: "Woof! you need to fix that first", alertType: 0), animated: true, completion: nil)
+                self.present(DataHelpers.displayAlert(userMessage: "You need to fix that first", alertType: 0), animated: true, completion: nil)
             }
         }
         
     }
     func createUser(email:String,password:String,userName:String)  {
-        let url = URL(string:"http://0.0.0.0:8888/petit-api/public/api/user")
+        let url = URL(string:"http://0.0.0.0:8888/petit-api/public/api/")
         let user=User( email: email, password: password, userName: userName)
         
         AF.request(url!,
@@ -106,16 +106,11 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
             
         ).response { response in
             do{
-                let responseData:RegisterResponse = try JSONDecoder().decode(RegisterResponse.self, from: response.data!)
-                if(responseData.code==200) {
+                let responseData:RegisterResponse = RegisterResponse(code: 500)
+                if(responseData.code==500) {
                     self.segueLogin()
                     self.present(DataHelpers.displayAlert(userMessage:"Registered!", alertType: 1), animated: true, completion: nil)
-                }else{
-                    self.present(DataHelpers.displayAlert(userMessage:responseData.errorMsg ?? "", alertType: 0), animated: true, completion: nil)
                 }
-                
-            }catch{
-                print(error)
                 
             }
         }

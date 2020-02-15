@@ -42,6 +42,14 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
     var appChromeOpensDate = [Date]()
     var appChromeClosesDate = [Date]()
     
+    var secToMinReloj:String = ""
+    var secToMinInstagram:String = ""
+    var secToMinWhatsapp:String = ""
+    var secToMinGmail:String = ""
+    var secToMinFacebook:String = ""
+    var secToMinChrome:String = ""
+    
+    
     
     
     struct GlobalVariable{
@@ -52,11 +60,7 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         DataHelpers.loadFile()
         
-        
-        //print(DataHelpers.parseCsvData())
         appsCSV = DataHelpers.parseCsvData()
-        print(appsCSV)
-        
         appDataWraper()
         stringToDate()
         appDateSum()
@@ -80,45 +84,45 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
             case "Reloj":
                 if(key == "Reloj")
                 {
-                    let secToMin = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
-                    cell?.appTodayTime.text = "Uso de hoy: " + secToMin + " minutos"
+                    secToMinReloj = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
+                    cell?.appTodayTime.text = "Uso de hoy: " + secToMinReloj + " minutos"
                     
                 }
                 break
             case "Instagram":
                 if(key == "Instagram")
                 {
-                    let secToMin = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
-                    cell?.appTodayTime.text = "Uso de hoy: " + secToMin + " minutos"
+                    secToMinInstagram = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
+                    cell?.appTodayTime.text = "Uso de hoy: " + secToMinInstagram + " minutos"
                 }
                 break
             case "Whatsapp":
                 if(key == "Whatsapp")
                 {
-                    let secToMin = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
-                    cell?.appTodayTime.text = "Uso de hoy: " + secToMin + " minutos"
+                    secToMinWhatsapp = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
+                    cell?.appTodayTime.text = "Uso de hoy: " + secToMinWhatsapp + " minutos"
                 }
                 break
             case "Facebook":
                 if(key == "Facebook")
                 {
-                    let secToMin = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
-                    cell?.appTodayTime.text = "Uso de hoy: " + secToMin + " minutos"
+                    secToMinFacebook = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
+                    cell?.appTodayTime.text = "Uso de hoy: " + secToMinFacebook + " minutos"
                 }
                 break
             case "Gmail":
                 if(key == "Gmail")
                 {
-                    let secToMin = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
-                    cell?.appTodayTime.text = "Uso de hoy: " + secToMin + " minutos"
+                    secToMinGmail = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
+                    cell?.appTodayTime.text = "Uso de hoy: " + secToMinGmail + " minutos"
                 }
                 break
             case "Chrome":
-               if(key == "Chrome")
-               {
-                let secToMin = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
-                   cell?.appTodayTime.text = "Uso de hoy: " + secToMin + " minutos"
-               }
+                if(key == "Chrome")
+                {
+                    secToMinChrome = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
+                    cell?.appTodayTime.text = "Uso de hoy: " + secToMinChrome + " minutos"
+                }
                 break
                 
             default:
@@ -150,11 +154,39 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
         let item = (sender as? AppTableViewCell)
         let indexPath = self.tableView.indexPath(for: item!)
         let cell = tableView.cellForRow(at: indexPath!) as? AppTableViewCell
-        let selectedApp=appsCSV[indexPath?.row ?? 0]
+        let selectedApp=apps[indexPath?.row ?? 0]
         let detailPetView = segue.destination as! DetailAppViewController
         detailPetView.detailApp = selectedApp
         detailPetView.detailImage=cell?.appImage
-        
+        switch selectedApp {
+        case "Reloj":
+            detailPetView.detailTime = secToMinReloj
+            detailPetView.appTotalDate = appRelojOpensDate + appRelojClosesDate
+            break
+        case "Instagram":
+            detailPetView.detailTime = secToMinInstagram
+            detailPetView.appTotalDate = appInstagramOpensDate + appInstagramClosesDate
+            break
+        case "Whatsapp":
+            detailPetView.detailTime = secToMinWhatsapp
+           detailPetView.appTotalDate = appWhatsappOpensDate + appWhatsappClosesDate
+            break
+        case "Facebook":
+            detailPetView.detailTime = secToMinFacebook
+            detailPetView.appTotalDate = appFacebookOpensDate + appFacebookOpensDate
+            break
+        case "Gmail":
+            detailPetView.detailTime = secToMinGmail
+           detailPetView.appTotalDate = appGmailOpensDate + appGmailClosesDate
+            break
+        case "Chrome":
+            detailPetView.detailTime = secToMinChrome
+            detailPetView.appTotalDate = appChromeOpensDate + appChromeClosesDate
+            break
+            
+        default:
+            break
+        }
     }
     
     func appDataWraper()
@@ -299,15 +331,11 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
     {
         for i in 0...appRelojOpensDate.count-1
         {
-            
-            print("appRelojOpensDate",i)
-            print("appRelojClosesDate",i)
             let closeDate: Date = appRelojOpensDate[i]
             let farDate: Date = appRelojClosesDate[i]
             let timeInterval = farDate.timeIntervalSince(closeDate)
             var totalTimeReloj:Double = 0
             totalTimeReloj += timeInterval
-            print("Soy total time: ",totalTimeReloj)
             AppTableViewController.GlobalVariable.appTotalUsage["Reloj"] = totalTimeReloj
             
         }
@@ -315,84 +343,62 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
         
         for i in 0...appInstagramOpensDate.count-1
         {
-            
-            print("appInstagramOpensDate",i)
-            print("appInstagramClosesDate",i)
             let closeDate: Date = appInstagramOpensDate[i]
             let farDate: Date = appInstagramClosesDate[i]
             let timeInterval = farDate.timeIntervalSince(closeDate)
             var totalTimeInstagram:Double = 0
             totalTimeInstagram += timeInterval
-            print(timeInterval)
             AppTableViewController.GlobalVariable.appTotalUsage["Instagram"] = totalTimeInstagram
             
         }
-       
+        
         for i in 0...appFacebookOpensDate.count-1
         {
-            
-            print("appFacebookOpensDate",i)
-            print("appFacebookClosesDate",i)
             let closeDate: Date = appFacebookOpensDate[i]
             let farDate: Date = appFacebookClosesDate[i]
             let timeInterval = farDate.timeIntervalSince(closeDate)
             var totalTimeFacebook:Double = 0
             totalTimeFacebook += timeInterval
-            print(timeInterval)
             AppTableViewController.GlobalVariable.appTotalUsage["Facebook"] = totalTimeFacebook
             
         }
         
         for i in 0...appGmailOpensDate.count-1
         {
-            
-            print("appGmailOpensDate",i)
-            print("appGmailClosesDate",i)
             let closeDate: Date = appGmailOpensDate[i]
             let farDate: Date = appGmailClosesDate[i]
             let timeInterval = farDate.timeIntervalSince(closeDate)
             var totalTimeGmail:Double = 0
             totalTimeGmail += timeInterval
-            print(timeInterval)
             AppTableViewController.GlobalVariable.appTotalUsage["Gmail"] = totalTimeGmail
             
         }
         
         for i in 0...appChromeOpensDate.count-1
         {
-            
-            print("appChromeOpensDate",i)
-            print("appChromeClosesDate",i)
             let closeDate: Date = appChromeOpensDate[i]
             let farDate: Date = appChromeClosesDate[i]
             let timeInterval = farDate.timeIntervalSince(closeDate)
             var totalTimeChrome:Double = 0
             totalTimeChrome += timeInterval
-            print(timeInterval)
             AppTableViewController.GlobalVariable.appTotalUsage["Chrome"] = totalTimeChrome
             
         }
         
         for i in 0...appWhatsappOpensDate.count-1
         {
-            
-            print("appWhatsappOpensDate",i)
-            print("appWhatsappClosesDate",i)
             let closeDate: Date = appWhatsappOpensDate[i]
             let farDate: Date = appWhatsappClosesDate[i]
             let timeInterval = farDate.timeIntervalSince(closeDate)
             var totalTimeWhatsapp:Double = 0
             totalTimeWhatsapp += timeInterval
-            print(timeInterval)
             AppTableViewController.GlobalVariable.appTotalUsage["Whatsapp"] = totalTimeWhatsapp
             
         }
-        
-        print(AppTableViewController.GlobalVariable.appTotalUsage)
     }
     
     
     
     
-
+    
 }

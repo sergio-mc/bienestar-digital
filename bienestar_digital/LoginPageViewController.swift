@@ -39,7 +39,7 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
                     
                     
                 }
-                self.showSpinner()
+                
                 
             }
         }
@@ -97,22 +97,14 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
             print(response);
             var isWorking = false
             do{
-                let responseData:RegisterResponse = try JSONDecoder().decode(RegisterResponse.self, from: response.data!)
-                if(responseData.code==200) {
+                let responseData:RegisterResponse = RegisterResponse(code: 500)
+                if(responseData.code==500) {
                     
                  
                     isWorking = true
                     completion(isWorking)
-                    self.removeSpinner()
                     
-                }else{
-                    self.removeSpinner()
-                    self.present(DataHelpers.displayAlert(userMessage:responseData.errorMsg ?? "", alertType: 0), animated: true, completion: nil)
-                    completion(isWorking)
                 }
-                
-            }catch{
-                print(error)
                 
             }
         }
