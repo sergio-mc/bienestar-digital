@@ -1,21 +1,18 @@
 //
-//  AppTableViewController.swift
+//  DetailAppViewController.swift
 //  bienestar_digital
 //
-//  Created by Sergio on 29/01/2020.
+//  Created by Sergio on 13/02/2020.
 //  Copyright © 2020 sergio-mc. All rights reserved.
 //
 
 import UIKit
 
-class AppTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DetailAppViewController: UIViewController,UITableViewDataSource, UITableViewDelegate{
     
-    let apps = ["Instagram","Whatsapp","Facebook","Chrome","Gmail","Reloj"]
-    
+    public var detailApp:DataModel?
+    public var detailImage:UIImageView?
     var appsCSV: [DataModel] = []
-    @IBOutlet weak var tableView: UITableView!
-    
-    
     var appRelojOpens = [DataModel]()
     var appRelojCloses = [DataModel]()
     var appInstagramOpens = [DataModel]()
@@ -42,118 +39,69 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
     var appChromeOpensDate = [Date]()
     var appChromeClosesDate = [Date]()
     
+    var appTotalUsage = [String: Double]()
     
     
-    struct GlobalVariable{
-        static var appTotalUsage = [String: Double]()
-    }
+    
+    @IBOutlet weak var imageApp: UIImageView!
+    
+    @IBOutlet weak var nameApp: UILabel!
+    
+    @IBOutlet weak var totalTimeApp: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         DataHelpers.loadFile()
-        
-        
-        //print(DataHelpers.parseCsvData())
         appsCSV = DataHelpers.parseCsvData()
-        print(appsCSV)
         
         appDataWraper()
         stringToDate()
         appDateSum()
+        
+        if let dataModel = detailApp, let image = detailImage {
+            setValues(dataModel: dataModel, image: image )
+        }
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        // Do any additional setup after loading the view.
     }
     
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = appTableView.dequeueReusableCell(withIdentifier: "AppCell") as? AppTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell") as? DetailTableViewCell
         
-        let imagen = apps[indexPath.item]
-        cell?.appImage.image = UIImage.init(imageLiteralResourceName: imagen)
-        
-        let appName = apps[indexPath.row]
-        cell?.appName.text = appName
-        
-        
-        for (key,value) in AppTableViewController.GlobalVariable.appTotalUsage
-        {
-            switch appName {
-            case "Reloj":
-                if(key == "Reloj")
-                {
-                    let secToMin = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
-                    cell?.appTodayTime.text = "Uso de hoy: " + secToMin + " minutos"
-                    
-                }
-                break
-            case "Instagram":
-                if(key == "Instagram")
-                {
-                    let secToMin = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
-                    cell?.appTodayTime.text = "Uso de hoy: " + secToMin + " minutos"
-                }
-                break
-            case "Whatsapp":
-                if(key == "Whatsapp")
-                {
-                    let secToMin = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
-                    cell?.appTodayTime.text = "Uso de hoy: " + secToMin + " minutos"
-                }
-                break
-            case "Facebook":
-                if(key == "Facebook")
-                {
-                    let secToMin = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
-                    cell?.appTodayTime.text = "Uso de hoy: " + secToMin + " minutos"
-                }
-                break
-            case "Gmail":
-                if(key == "Gmail")
-                {
-                    let secToMin = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
-                    cell?.appTodayTime.text = "Uso de hoy: " + secToMin + " minutos"
-                }
-                break
-            case "Chrome":
-               if(key == "Chrome")
-               {
-                let secToMin = String(format: "%.2f",(DataHelpers.secToMin(seconds: value)))
-                   cell?.appTodayTime.text = "Uso de hoy: " + secToMin + " minutos"
-               }
-                break
-                
-            default:
-                break
-            }
-        }
-        
-        
-        
+        let date = appRelojOpensDate[indexPath.row]
+        cell?.totalUsage.text = DataHelpers.toString(date: date)
         return cell!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return apps.count
+        return appRelojOpensDate.count + appRelojClosesDate.count
     }
     
     
-    
-    
-    @IBOutlet weak var appTableView: UITableView!
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        
+    func setValues(dataModel:DataModel, image:UIImageView)
+    {
+        nameApp.text = dataModel.App
+        imageApp.image = image.image
+        totalTimeApp.text = dataModel.Date
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let item = (sender as? AppTableViewCell)
-        let indexPath = self.tableView.indexPath(for: item!)
-        let cell = tableView.cellForRow(at: indexPath!) as? AppTableViewCell
-        let selectedApp=appsCSV[indexPath?.row ?? 0]
-        let detailPetView = segue.destination as! DetailAppViewController
-        detailPetView.detailApp = selectedApp
-        detailPetView.detailImage=cell?.appImage
+    func dateToSeconds()
+    {
+        for index in appsCSV {
+            let iApp = index.App
+            let iDate = index.Date
+            let iEvent = index.Event
+            print(iApp,iEvent,iDate)
+            
+            /*let formateador = DateFormatter()
+             formateador.dateFormat = "yyyy-MM-dd HH:mm:ss"
+             let fechaEnTexto:Date = formateador.date(from: index.Date)!
+             print(fechaEnTexto)*/
+        }
+        
         
     }
     
@@ -308,7 +256,7 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
             var totalTimeReloj:Double = 0
             totalTimeReloj += timeInterval
             print("Soy total time: ",totalTimeReloj)
-            AppTableViewController.GlobalVariable.appTotalUsage["Reloj"] = totalTimeReloj
+            appTotalUsage["Reloj"] = totalTimeReloj
             
         }
         
@@ -324,7 +272,7 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
             var totalTimeInstagram:Double = 0
             totalTimeInstagram += timeInterval
             print(timeInterval)
-            AppTableViewController.GlobalVariable.appTotalUsage["Instagram"] = totalTimeInstagram
+            appTotalUsage["Instagram"] = totalTimeInstagram
             
         }
        
@@ -339,7 +287,7 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
             var totalTimeFacebook:Double = 0
             totalTimeFacebook += timeInterval
             print(timeInterval)
-            AppTableViewController.GlobalVariable.appTotalUsage["Facebook"] = totalTimeFacebook
+            appTotalUsage["Facebook"] = totalTimeFacebook
             
         }
         
@@ -354,7 +302,7 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
             var totalTimeGmail:Double = 0
             totalTimeGmail += timeInterval
             print(timeInterval)
-            AppTableViewController.GlobalVariable.appTotalUsage["Gmail"] = totalTimeGmail
+            appTotalUsage["Gmail"] = totalTimeGmail
             
         }
         
@@ -369,7 +317,7 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
             var totalTimeChrome:Double = 0
             totalTimeChrome += timeInterval
             print(timeInterval)
-            AppTableViewController.GlobalVariable.appTotalUsage["Chrome"] = totalTimeChrome
+            appTotalUsage["Chrome"] = totalTimeChrome
             
         }
         
@@ -384,15 +332,12 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
             var totalTimeWhatsapp:Double = 0
             totalTimeWhatsapp += timeInterval
             print(timeInterval)
-            AppTableViewController.GlobalVariable.appTotalUsage["Whatsapp"] = totalTimeWhatsapp
+            appTotalUsage["Whatsapp"] = totalTimeWhatsapp
             
         }
         
-        print(AppTableViewController.GlobalVariable.appTotalUsage)
+        print(appTotalUsage)
     }
     
     
-    
-    
-
 }

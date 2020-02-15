@@ -12,7 +12,11 @@ import HGCircularSlider
 class AppsCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
     
-    let apps = ["instagram","whatsapp","facebook","chrome","gmail","reloj"]
+    let apps = ["Instagram","Whatsapp","Facebook","Chrome","Gmail","Reloj"]
+    
+    var appsCSV: [DataModel] = []
+    
+    
     
     @IBOutlet weak var minutesCircularSlider: CircularSlider!
     
@@ -38,7 +42,9 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
         
         
         DataHelpers.loadFile()
-        print(DataHelpers.parseCsvData())
+        appsCSV = DataHelpers.parseCsvData()
+        print(appsCSV)
+        
         
     }
     
@@ -63,7 +69,7 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
     func setupSliders() {
         // hours
         hoursCircularSlider.minimumValue = 0
-        hoursCircularSlider.maximumValue = 12
+        hoursCircularSlider.maximumValue = 23
         hoursCircularSlider.endPointValue = 6
         hoursCircularSlider.addTarget(self, action: #selector(updateHours), for: .valueChanged)
         hoursCircularSlider.addTarget(self, action: #selector(adjustHours), for: .editingDidEnd)
@@ -102,10 +108,6 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
         let selectedMinute = round(minutesCircularSlider.endPointValue)
         minutesCircularSlider.endPointValue = selectedMinute
         updateMinutes()
-    }
-
-    @IBAction func switchBetweenAMAndPM(_ sender: UISegmentedControl) {
-        AMPMLabel.text = sender.selectedSegmentIndex == 0 ? "AM" : "PM"
     }
     
     

@@ -8,8 +8,6 @@ class DataHelpers{
     static var path: URL? = URL(fileURLWithPath: "/Users/user/Desktop/SergioDAM/bienestar-digital/data.csv" )
     
     
-    
-    
     static func displayAlert(userMessage:String, alertType: Int)->UIAlertController{
         let alertTitle: String
         
@@ -112,7 +110,21 @@ class DataHelpers{
       }
       return result
     }
-
+    
+    static func toString(date:Date) -> String
+    {
+        let formateador = DateFormatter()
+        formateador.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let fechaEnTexto = formateador.string(from: date)
+        return fechaEnTexto
+    }
+    
+    static func secToMin(seconds:Double) -> Double
+    {
+        let secToMin = seconds / 60
+        return secToMin
+    }
+    
     
 }
 

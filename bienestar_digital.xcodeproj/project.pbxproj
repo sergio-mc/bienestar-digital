@@ -12,6 +12,8 @@
 		CE0BDC1B23EF47FE00BC69EB /* AppsCollectionViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0BDC1A23EF47FE00BC69EB /* AppsCollectionViewControllerCell.swift */; };
 		CE0F370923E1FF9300D7189B /* AppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F370823E1FF9300D7189B /* AppTableViewCell.swift */; };
 		CE0F370B23E2029600D7189B /* AppTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F370A23E2029600D7189B /* AppTableViewController.swift */; };
+		CE6A659223F5C35A003CF996 /* DetailAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A659123F5C35A003CF996 /* DetailAppViewController.swift */; };
+		CE6A659423F77BB2003CF996 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A659323F77BB2003CF996 /* DetailTableViewCell.swift */; };
 		CEA699C323DF73F6000FD870 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA699C223DF73F6000FD870 /* RegisterPageViewController.swift */; };
 		CEA699C523DF7439000FD870 /* RecoverPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA699C423DF7439000FD870 /* RecoverPageViewController.swift */; };
 		CEA699C723DF7471000FD870 /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA699C623DF7471000FD870 /* LoginPageViewController.swift */; };
@@ -61,6 +63,8 @@
 		CE0BDC1A23EF47FE00BC69EB /* AppsCollectionViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsCollectionViewControllerCell.swift; sourceTree = "<group>"; };
 		CE0F370823E1FF9300D7189B /* AppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTableViewCell.swift; sourceTree = "<group>"; };
 		CE0F370A23E2029600D7189B /* AppTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTableViewController.swift; sourceTree = "<group>"; };
+		CE6A659123F5C35A003CF996 /* DetailAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAppViewController.swift; sourceTree = "<group>"; };
+		CE6A659323F77BB2003CF996 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		CEA699C223DF73F6000FD870 /* RegisterPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		CEA699C423DF7439000FD870 /* RecoverPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPageViewController.swift; sourceTree = "<group>"; };
 		CEA699C623DF7471000FD870 /* LoginPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 				CECFAC9823F1E09C00FEEB89 /* MapViewController.swift */,
 				CECFAC9F23F2CF4800FEEB89 /* StatisticsViewController.swift */,
 				CECFACA523F320B500FEEB89 /* DataModel.swift */,
+				CE6A659123F5C35A003CF996 /* DetailAppViewController.swift */,
+				CE6A659323F77BB2003CF996 /* DetailTableViewCell.swift */,
 			);
 			path = bienestar_digital;
 			sourceTree = "<group>";
@@ -494,6 +500,7 @@
 				CECBAE3C23C734F700E24B98 /* UiViewController.swift in Sources */,
 				CEA699CD23DF759E000FD870 /* Register.swift in Sources */,
 				CEBD6AE523A7DBDA004A0368 /* SceneDelegate.swift in Sources */,
+				CE6A659223F5C35A003CF996 /* DetailAppViewController.swift in Sources */,
 				CEA699CB23DF7509000FD870 /* User.swift in Sources */,
 				CE0F370923E1FF9300D7189B /* AppTableViewCell.swift in Sources */,
 				CE0BDC1923EF476900BC69EB /* AppsCollectionViewController.swift in Sources */,
@@ -502,6 +509,7 @@
 				CECFAC9923F1E09C00FEEB89 /* MapViewController.swift in Sources */,
 				CEA699C323DF73F6000FD870 /* RegisterPageViewController.swift in Sources */,
 				CECFACA623F320B500FEEB89 /* DataModel.swift in Sources */,
+				CE6A659423F77BB2003CF996 /* DetailTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
