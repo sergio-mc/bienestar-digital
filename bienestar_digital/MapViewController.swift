@@ -7,31 +7,38 @@
 //
 
 import Foundation
-import GoogleMaps
-import GooglePlaces
+import MapKit
+
 
 class MapViewController: UIViewController {
-
-  // You don't need to modify the default init(nibName:bundle:) method.
-
-  override func loadView() {
-    // Create a GMSCameraPosition that tells the map to display the
-    // coordinate -33.86,151.20 at zoom level 6.
-    let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 0)
-    let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-    view = mapView
-
-    // Creates a marker in the center of the map.
-    let marker = GMSMarker()
-    marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-    marker.title = "Sydney"
-    marker.snippet = "Australia"
-    marker.map = mapView
     
-    let marker2 = GMSMarker()
-    marker2.position = CLLocationCoordinate2D(latitude: 40.4167, longitude: -3.70325)
-    marker2.title = "Madrid"
-    marker2.snippet = "Madrid"
-    marker2.map = mapView
-  }
+    var appsCSV: [DataModel] = []
+    
+    let annotation = MKPointAnnotation()
+    override func viewDidLoad() {
+        
+        DataHelpers.loadFile()
+        appsCSV = DataHelpers.parseCsvData()
+        print("Hola soy el csv de mapas", appsCSV)
+        
+        
+        // set initial location in Honolulu
+        
+        for data in appsCSV
+        {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: data.Latitude, longitude: data.Longitude)
+            annotation.title = data.App
+            mapView.addAnnotation(annotation)
+        }
+
+        
+    }
+    
+    
+    @IBOutlet weak var mapView: MKMapView!
+    
+    
+    
+    
 }

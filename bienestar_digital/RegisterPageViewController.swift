@@ -109,6 +109,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
                 let responseData:RegisterResponse = RegisterResponse(code: 500)
                 if(responseData.code==500) {
                     self.segueLogin()
+                    self.createUserFaked(email: email, password: password)
                     self.present(DataHelpers.displayAlert(userMessage:"Registered!", alertType: 1), animated: true, completion: nil)
                 }
                 
@@ -119,6 +120,12 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
     
     func segueLogin()  {
         performSegue(withIdentifier: "registerSegue", sender: nil)
+    }
+    
+    func createUserFaked(email:String,password:String)
+    {
+        let user = User( email: email, password: password)
+        MockData.MockUpUser.append(user)
     }
     
     

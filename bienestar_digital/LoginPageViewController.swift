@@ -28,7 +28,7 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
             
         } else {
             
-            if(DataHelpers.isValidEmail(userEmail!) && DataHelpers.isValidPassword(userPassword!)){
+            if(DataHelpers.isValidEmail(userEmail!) && DataHelpers.isValidPassword(userPassword!) && DataHelpers.isValidUser(userEmail!, userPassword!)){
                 loginUser(email: userEmail!, password: userPassword!)
                 {
                     (isWorking) in
@@ -36,12 +36,13 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
                     if(isWorking) {self.segueLogin()
                            
                     }
-                    
-                    
                 }
-                
-                
+                self.showSpinner()
+            }else{
+                self.present(DataHelpers.displayAlert(userMessage:"Usuario no corresponde al especificado en MockData", alertType: 0), animated: true, completion: nil)
+                return;
             }
+            
         }
         
         
@@ -103,6 +104,7 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
                  
                     isWorking = true
                     completion(isWorking)
+                    self.removeSpinner()
                     
                 }
                 

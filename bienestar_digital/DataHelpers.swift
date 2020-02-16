@@ -125,6 +125,22 @@ class DataHelpers{
         return secToMin
     }
     
+    static func isValidUser(_ email: String, _ password: String) -> Bool {
+        for i in MockData.MockUpUser
+        {
+            let currentEmail = i.email
+            let currentPassword = i.password
+            if(email == currentEmail && password == currentPassword)
+            {
+                return true
+            }
+        }
+        
+        return false
+        
+        
+    }
+    
     
 }
 

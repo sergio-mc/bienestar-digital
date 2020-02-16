@@ -7,3 +7,11 @@
 //
 
 import Foundation
+class MockData{
+    
+    public static var MockUpUser = [User.init(email: "admin@gmail.com" , password: "admin123", userName: "admin")]
+    
+    
+    
+}
+
