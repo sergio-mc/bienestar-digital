@@ -11,7 +11,7 @@
         <!--Navigation Controller-->
         <scene sceneID="YVO-dl-YuA">
             <objects>
-                <navigationController id="zen-l3-KlK" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="login" id="zen-l3-KlK" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="bKX-07-m6Y"/>
                     <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DOG-vD-EgB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -770,6 +770,9 @@
                                                     <segment title="Off"/>
                                                     <segment title="On"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="notificationsSelector:" destination="eSU-Ny-9Oj" eventType="valueChanged" id="JZQ-pP-HXy"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
@@ -810,6 +813,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="recoverButton:" destination="iwO-rR-9GT" eventType="touchUpInside" id="qPv-kY-0SU"/>
+                                            <action selector="segueReset:" destination="eSU-Ny-9Oj" eventType="touchUpInside" id="D3l-E3-ir1"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -826,6 +830,7 @@
                     <tabBarItem key="tabBarItem" title="Perfil" image="person.crop.circle" catalog="system" selectedImage="person.crop.circle.fill" id="ScS-3H-WwW"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="notificationsOutlet" destination="Yb1-4L-xrS" id="fyU-hs-va1"/>
                         <outlet property="userName" destination="c7q-hK-roq" id="Ve4-c1-6oz"/>
                         <segue destination="zen-l3-KlK" kind="presentation" identifier="loginSegue" id="Dbz-bE-T7w"/>
                     </connections>
@@ -1271,7 +1276,7 @@
         <!--Recover Page View Controller-->
         <scene sceneID="oxY-tT-OXk">
             <objects>
-                <viewController id="iwO-rR-9GT" customClass="RecoverPageViewController" customModule="bienestar_digital" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reset" id="iwO-rR-9GT" customClass="RecoverPageViewController" customModule="bienestar_digital" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TuV-6r-QL9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1421,6 +1426,7 @@
                     <navigationItem key="navigationItem" id="wdh-5h-wIl"/>
                     <connections>
                         <outlet property="userEmail" destination="rgx-lz-dg0" id="FkE-eg-pR8"/>
+                        <segue destination="wWz-r8-UqR" kind="show" identifier="recoverSegue" id="Il1-5I-ANQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NDd-se-3cO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1671,6 +1677,6 @@
         <image name="power" catalog="system" width="64" height="62"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="X5B-0n-RXF"/>
+        <segue reference="Il1-5I-ANQ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -5,7 +5,7 @@ import UIKit
 //Displays an alert with a message depending on the string passed through parameters
 class DataHelpers{
     
-    static var path: URL? = URL(fileURLWithPath: "/Users/user/Desktop/SergioDAM/bienestar-digital/data.csv" )
+    static var path: URL? = URL(fileURLWithPath: "/Users/user/Desktop/data.csv" )
     
     
     static func displayAlert(userMessage:String, alertType: Int)->UIAlertController{
@@ -37,6 +37,25 @@ class DataHelpers{
         
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
+    }
+    static func isValidEmailFake(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        var emailToSend:String?
+        
+        for i in MockData.MockUpUser
+        {
+            if(email == i.email)
+            {
+                emailToSend = i.email
+            }else{
+                return false
+            }
+            
+        }
+        
+        return emailPred.evaluate(with: emailToSend)
     }
     
     //
