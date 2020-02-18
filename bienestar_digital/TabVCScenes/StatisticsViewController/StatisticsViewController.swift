@@ -31,17 +31,17 @@ class StatisticsViewController: UIViewController {
         graphic.chartDescription?.text = ""
         
 
-        relojDataEntry.value = 0.17
+        relojDataEntry.value = 0.25
         relojDataEntry.label = "Reloj"
-        instagramDataEntry.value = 0.36
+        instagramDataEntry.value = 110.27
         instagramDataEntry.label = "Instagram"
-        facebookDataEntry.value = 0.33
+        facebookDataEntry.value = 89.02
         facebookDataEntry.label = "Facebook"
-        whatsappDataEntry.value = 0.7
+        whatsappDataEntry.value = 16.47
         whatsappDataEntry.label = "Whatsapp"
-        gmailDataEntry.value = 0.31
+        gmailDataEntry.value = 91.95
         gmailDataEntry.label = "Gmail"
-        chromeDataEntry.value = 0.11
+        chromeDataEntry.value = 53.95
         chromeDataEntry.label = "Chrome"
         
         usageTimeApps = [relojDataEntry,instagramDataEntry,facebookDataEntry,whatsappDataEntry,gmailDataEntry,chromeDataEntry]
@@ -75,17 +75,17 @@ class StatisticsViewController: UIViewController {
     @IBAction func rangeChange(_ sender: Any) {
         switch rangeSelector.selectedSegmentIndex {
         case 0:
-            relojDataEntry.value = 0.17
+            relojDataEntry.value = 0.25
             relojDataEntry.label = "Reloj"
-            instagramDataEntry.value = 0.36
+            instagramDataEntry.value = 110.27
             instagramDataEntry.label = "Instagram"
-            facebookDataEntry.value = 0.33
+            facebookDataEntry.value = 89.02
             facebookDataEntry.label = "Facebook"
-            whatsappDataEntry.value = 0.7
+            whatsappDataEntry.value = 16.47
             whatsappDataEntry.label = "Whatsapp"
-            gmailDataEntry.value = 0.31
+            gmailDataEntry.value = 91.95
             gmailDataEntry.label = "Gmail"
-            chromeDataEntry.value = 0.11
+            chromeDataEntry.value = 53.95
             chromeDataEntry.label = "Chrome"
             
             usageTimeApps = [relojDataEntry,instagramDataEntry,facebookDataEntry,whatsappDataEntry,gmailDataEntry,chromeDataEntry]
@@ -93,17 +93,17 @@ class StatisticsViewController: UIViewController {
             updateChartData()
             break
         case 1:
-            relojDataEntry.value = 0.47
+            relojDataEntry.value = 1.75
             relojDataEntry.label = "Reloj"
-            instagramDataEntry.value = 0.76
+            instagramDataEntry.value = 771.89
             instagramDataEntry.label = "Instagram"
-            facebookDataEntry.value = 0.73
+            facebookDataEntry.value = 632.14
             facebookDataEntry.label = "Facebook"
-            whatsappDataEntry.value = 1.3
+            whatsappDataEntry.value = 115.29
             whatsappDataEntry.label = "Whatsapp"
-            gmailDataEntry.value = 0.71
+            gmailDataEntry.value = 643.65
             gmailDataEntry.label = "Gmail"
-            chromeDataEntry.value = 0.51
+            chromeDataEntry.value = 377.65
             chromeDataEntry.label = "Chrome"
             
             usageTimeApps = [relojDataEntry,instagramDataEntry,facebookDataEntry,whatsappDataEntry,gmailDataEntry,chromeDataEntry]
@@ -111,17 +111,17 @@ class StatisticsViewController: UIViewController {
             updateChartData()
             break
         case 2:
-            relojDataEntry.value = 10.47
+            relojDataEntry.value = 7.75
             relojDataEntry.label = "Reloj"
-            instagramDataEntry.value = 14.76
+            instagramDataEntry.value = 3418.37
             instagramDataEntry.label = "Instagram"
-            facebookDataEntry.value = 15.73
+            facebookDataEntry.value = 2759.62
             facebookDataEntry.label = "Facebook"
-            whatsappDataEntry.value = 40.3
+            whatsappDataEntry.value = 510.57
             whatsappDataEntry.label = "Whatsapp"
-            gmailDataEntry.value = 7.71
+            gmailDataEntry.value = 2850.45
             gmailDataEntry.label = "Gmail"
-            chromeDataEntry.value = 38.51
+            chromeDataEntry.value = 1672.45
             chromeDataEntry.label = "Chrome"
             
             usageTimeApps = [relojDataEntry,instagramDataEntry,facebookDataEntry,whatsappDataEntry,gmailDataEntry,chromeDataEntry]
