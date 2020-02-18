@@ -64,6 +64,7 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
         appDataWraper()
         stringToDate()
         appDateSum()
+        print("Soy totalUsage: ",AppTableViewController.GlobalVariable.appTotalUsage)
     }
     
     
@@ -333,69 +334,69 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
     // Función que hace el sumatorio del intervalo entre cuando una aplicación se abre y su próximo cierre.
     func appDateSum()
     {
+        var totalTimeReloj:Double? = 0
         for i in 0...appRelojOpensDate.count-1
         {
             let closeDate: Date = appRelojOpensDate[i]
             let farDate: Date = appRelojClosesDate[i]
             let timeInterval = farDate.timeIntervalSince(closeDate)
-            var totalTimeReloj:Double = 0
-            totalTimeReloj += timeInterval
+            totalTimeReloj! += timeInterval
             AppTableViewController.GlobalVariable.appTotalUsage["Reloj"] = totalTimeReloj
+            
             
         }
         
-        
+        var totalTimeInstagram:Double? = 0
         for i in 0...appInstagramOpensDate.count-1
         {
             let closeDate: Date = appInstagramOpensDate[i]
             let farDate: Date = appInstagramClosesDate[i]
             let timeInterval = farDate.timeIntervalSince(closeDate)
-            var totalTimeInstagram:Double = 0
-            totalTimeInstagram += timeInterval
+            totalTimeInstagram! += timeInterval
             AppTableViewController.GlobalVariable.appTotalUsage["Instagram"] = totalTimeInstagram
             
         }
         
+        var totalTimeFacebook:Double? = 0
         for i in 0...appFacebookOpensDate.count-1
         {
             let closeDate: Date = appFacebookOpensDate[i]
             let farDate: Date = appFacebookClosesDate[i]
             let timeInterval = farDate.timeIntervalSince(closeDate)
-            var totalTimeFacebook:Double = 0
-            totalTimeFacebook += timeInterval
+            totalTimeFacebook! += timeInterval
             AppTableViewController.GlobalVariable.appTotalUsage["Facebook"] = totalTimeFacebook
             
         }
         
+        var totalTimeGmail:Double? = 0
         for i in 0...appGmailOpensDate.count-1
         {
             let closeDate: Date = appGmailOpensDate[i]
             let farDate: Date = appGmailClosesDate[i]
             let timeInterval = farDate.timeIntervalSince(closeDate)
-            var totalTimeGmail:Double = 0
-            totalTimeGmail += timeInterval
+            totalTimeGmail! += timeInterval
             AppTableViewController.GlobalVariable.appTotalUsage["Gmail"] = totalTimeGmail
             
         }
         
+        var totalTimeChrome:Double? = 0
         for i in 0...appChromeOpensDate.count-1
         {
             let closeDate: Date = appChromeOpensDate[i]
             let farDate: Date = appChromeClosesDate[i]
             let timeInterval = farDate.timeIntervalSince(closeDate)
-            var totalTimeChrome:Double = 0
-            totalTimeChrome += timeInterval
+            totalTimeChrome! += timeInterval
             AppTableViewController.GlobalVariable.appTotalUsage["Chrome"] = totalTimeChrome
             
         }
         
+        var totalTimeWhatsapp:Double? = 0
         for i in 0...appWhatsappOpensDate.count-1
         {
             let closeDate: Date = appWhatsappOpensDate[i]
             let farDate: Date = appWhatsappClosesDate[i]
             let timeInterval = farDate.timeIntervalSince(closeDate)
-            var totalTimeWhatsapp:Double = 0
-            totalTimeWhatsapp += timeInterval
+            totalTimeWhatsapp! += timeInterval
             AppTableViewController.GlobalVariable.appTotalUsage["Whatsapp"] = totalTimeWhatsapp
             
         }
