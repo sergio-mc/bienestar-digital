@@ -17,7 +17,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userConfirmPassword: SkyFloatingLabelTextField!
     
     
-    
+    // Función que al cargar la vista llama a eventos en sus elementos
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +30,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    // This will notify us when something has changed on the textfield
+    // Esta función notifica de cuando un textfield ha sido modificado
     @objc func textFieldDidChange(_ textfield: UITextField) {
         
         if let text = textfield.text {
@@ -64,7 +64,8 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //Sign up button event
+    
+    // Función que ejecuta un evento al pulsarse el botón. Valida los camptos del registro.
     @IBAction func signUpButton(_ sender: Any) {
         
         let userEmail = userEmailTF.text
@@ -95,6 +96,8 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
+    
+    // Función que crea un usuario con un metodo post (FALSO).
     func createUser(email:String,password:String,userName:String)  {
         let url = URL(string:"http://0.0.0.0:8888/bienestar/public/api/")
         let user=User( email: email, password: password, userName: userName)
@@ -118,10 +121,12 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    // Función donde se indica hacía donde irá dirigido el permorfSegue
     func segueLogin()  {
         performSegue(withIdentifier: "registerSegue", sender: nil)
     }
     
+    // Función para añadir el usuario falso a el array de usuarios disponibles en MockData
     func createUserFaked(email:String,password:String)
     {
         let user = User( email: email, password: password)

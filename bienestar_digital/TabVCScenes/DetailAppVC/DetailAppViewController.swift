@@ -31,7 +31,7 @@ class DetailAppViewController: UIViewController,UITableViewDataSource, UITableVi
     @IBOutlet weak var totalTimeApp: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    
+    // Función en la cual nada mas aparecer la vista, cargará el csv convertido y setea los valores correspondientes recibidos del perform segue de la VC anterior
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +48,7 @@ class DetailAppViewController: UIViewController,UITableViewDataSource, UITableVi
         DatesToString()
     }
     
+    // Función propia de tableView donde se setea el numero de eventos correspondientes de la aplicación.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell") as? DetailTableViewCell
         
@@ -58,11 +59,12 @@ class DetailAppViewController: UIViewController,UITableViewDataSource, UITableVi
         return cell!
     }
     
+    // Función propia de tableView para indicar el numero de lineas.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return appTotalDatesInString.count
     }
     
-    
+    // Función encargada de setear los valores de los elementos de la vista
     func setValues(appName:String, image:UIImageView)
     {
         nameApp.text = appName
@@ -71,6 +73,7 @@ class DetailAppViewController: UIViewController,UITableViewDataSource, UITableVi
         
     }
     
+    // Función que convierte los Dates en strings
     func DatesToString()
     {
         for i in appTotalDate

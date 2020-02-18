@@ -15,11 +15,12 @@ class MapViewController: UIViewController {
     var appsCSV: [DataModel] = []
     
     let annotation = MKPointAnnotation()
+    
+    // Función que al cargar la vista cargará los datos del csv convertido y por cada App añade un punto en el mapa
     override func viewDidLoad() {
         
         DataHelpers.loadFile()
         appsCSV = DataHelpers.parseCsvData()
-        print("Hola soy el csv de mapas", appsCSV)
         
         
         // set initial location in Honolulu

@@ -1,5 +1,6 @@
 import Foundation
 
+// Clase de estructuración de el código de respuesta
 struct RegisterResponse: Codable {
     var code: Int?
     var msg, errorMsg: String?

@@ -9,6 +9,7 @@ class RecoverPageViewController: UIViewController,UITextFieldDelegate{
     fileprivate var activityView : UIView?
     
     
+    // Función donde se llama un evento al ser pulsado un botón. Comprueba si el email existe. Si este existe le envia de nuevo a la aplicación, por lo contrario le muestra una alerta.
     @IBAction func recoverButton(_ sender: Any) {
         let userRecoverEmail = userEmail.text;
         
@@ -38,12 +39,14 @@ class RecoverPageViewController: UIViewController,UITextFieldDelegate{
         
     }
     
+    // Función que al cargar la vista añade un evento a un elementos de la vista
     override func viewDidLoad() {
         userEmail.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         super.viewDidLoad()
     }
     
+    // Esta función notifica de cuando un textfield ha sido modificado.
     @objc func textFieldDidChange(_ textfield: UITextField) {
         
         if let text = textfield.text {
@@ -65,6 +68,7 @@ class RecoverPageViewController: UIViewController,UITextFieldDelegate{
         }
     }
     
+    // Función asincrona (FALSA) que envía un correo al destinatario.
     func sendEmail(email:String)  {
         let url = URL(string:"http://0.0.0.0:8888/bienestar/public/api/user/password/reset")
         AF.request(url!,
@@ -84,7 +88,7 @@ class RecoverPageViewController: UIViewController,UITextFieldDelegate{
         }
         
     }
-    
+    // Función donde se muestra el spinner de carga
     func showSpinner()
     {
         activityView = UIView(frame: self.view.bounds)
@@ -97,15 +101,18 @@ class RecoverPageViewController: UIViewController,UITextFieldDelegate{
         self.view.addSubview(activityView!)
     }
     
+    // Función para eliminar el spinner de carga de la vista
     func removeSpinner()
     {
         activityView?.removeFromSuperview()
         activityView = nil
     }
     
+    // Función donde se hace un dismiss de la vista actual
     func segueRecover()  {
         self.dismiss(animated: true, completion: nil)
     }
+    // Función donde se indica hacía donde irá dirigido el permorfSegue
     func segueRecover2()  {
         performSegue(withIdentifier: "recoverSegue", sender: nil)
     }

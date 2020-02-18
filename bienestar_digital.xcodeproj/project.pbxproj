@@ -310,11 +310,11 @@
 				CEBD6AF023A7DBDC004A0368 /* Info.plist */,
 				CEBD6AEB23A7DBDC004A0368 /* Assets.xcassets */,
 				CE6A65AB23FBEE1A003CF996 /* appLogo.png */,
-				CE6A659D23FAFA5C003CF996 /* MockData */,
-				CE6A659C23FAF977003CF996 /* TabVCScenes */,
 				CE6A659B23FAF92C003CF996 /* UserInterface */,
+				CE6A659C23FAF977003CF996 /* TabVCScenes */,
 				CE6A65A723FAFBC0003CF996 /* Models */,
 				CE6A65A823FAFC0A003CF996 /* DataHelpers */,
+				CE6A659D23FAFA5C003CF996 /* MockData */,
 			);
 			path = bienestar_digital;
 			sourceTree = "<group>";

@@ -16,6 +16,7 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
     //Displays an alert with a message depending on the string passed through parameters
     
     
+    // Función encargada de cuando se pulse el boton de logearse compruebe si hay errores, por lo contrario llama a la función loginUser()
     @IBAction func loginButton(_ sender: Any) {
         let userEmail = userEmailTF.text;
         let userPassword = userPasswordTF.text;
@@ -48,6 +49,7 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    // Función que al cargar la vista cambia las propiedades de navigationBar y les añade eventos a elementos de esta.
     override func viewDidLoad() {
         userEmailTF.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         userPasswordTF.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -60,7 +62,7 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.view.backgroundColor = .clear
     }
     
-    // This will notify us when something has changed on the textfield
+    // Esta función notifica de cuando se ha hecho un cambio en los elementos textfield de la vista
     @objc func textFieldDidChange(_ textfield: UITextField) {
         
         if let text = textfield.text {
@@ -85,6 +87,8 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
+    // Función asincrona (FALSA) en la cual se envía un usuario y valida si este existe o no. En caso de que si, entra en la aplicación, en caso contrario se avisa al usuario con un error.
     func loginUser(email:String,password:String, completion: @escaping (Bool) -> ()){
         let url = URL(string:"http://0.0.0.0:8888/bienestar/public/api/user/login")
         let user=User( email: email, password: password)
@@ -112,11 +116,12 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-    
+    // Función donde se indica hacía donde irá dirigido el permorfSegue
     func segueLogin()  {
         performSegue(withIdentifier: "loginSegue", sender: nil)
     }
     
+    // Función donde se muestra el spinner de carga
     func showSpinner()
     {
         activityView = UIView(frame: self.view.bounds)
@@ -129,6 +134,7 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(activityView!)
     }
     
+    // Función para eliminar el spinner de carga de la vista 
     func removeSpinner()
     {
         activityView?.removeFromSuperview()

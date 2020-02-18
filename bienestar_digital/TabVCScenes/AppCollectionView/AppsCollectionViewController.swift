@@ -42,6 +42,8 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
     @IBOutlet weak var dots: UILabel!
     @IBOutlet weak var clockView: UIView!
     
+    
+    // Función que dependiendo del index del selector oculta los relojes o los muestra.
     @IBAction func selectorChange(_ sender: Any) {
         switch selectorReference.selectedSegmentIndex {
         case 0:
@@ -55,6 +57,7 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
         }
     }
     
+    // Función que envía los datos correspondientes dependiendo de el index del selector.
     @IBAction func saveChanges(_ sender: Any) {
         switch selectorReference.selectedSegmentIndex {
         case 0:
@@ -78,6 +81,7 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
         }
     }
     
+    // Función donde se carga el csv convertido y se define los delegates y datasource del collectionView.
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -90,10 +94,12 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
         selectedApp.image = UIImage.init(imageLiteralResourceName: selectedImage!)
     }
     
+    // Función propia del collectionView para indicar el numero de elementos por sección.
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return apps.count
     }
     
+    // Función propia del collectionView donde se setean las propiedades de cada app en el numero de celdas.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.appCV.dequeueReusableCell(withReuseIdentifier: "AppCell", for: indexPath) as! AppsCollectionViewControllerCell
         
@@ -102,12 +108,13 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
         return cell
     }
     
+    // Función propia del collectionView donde se identifica que celda se ha seleccionado y se setean las propiedades de este en otros elementos.
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedImage = apps[indexPath.row]
         selectedApp.image = UIImage.init(imageLiteralResourceName: selectedImage!)
     }
     
-    
+    // Función de la configuración de los relojes.
     func setupSliders() {
         // hours
         hoursCircularSlider.minimumValue = 0
@@ -138,7 +145,7 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
     }
     
     // MARK: user interaction methods
-    
+    // Función que actualiza las horas del primer reloj cuando el usuario interactua con el.
     @objc func updateHours() {
         var selectedHour = Int(hoursCircularSlider.endPointValue)
         // TODO: use date formatter
@@ -146,6 +153,7 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
         hoursLabel.text = String(format: "%02d", selectedHour)
     }
     
+    // Función que actualiza las horas del segundo reloj cuando el usuario interactua con el.
     @objc func updateHours2() {
         var selectedHour = Int(hoursCircularSlider2.endPointValue)
         // TODO: use date formatter
@@ -153,24 +161,27 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
         hoursLabel2.text = String(format: "%02d", selectedHour)
     }
     
+    // Función que ajusta las horas del primer reloj
     @objc func adjustHours() {
         let selectedHour = round(hoursCircularSlider.endPointValue)
         hoursCircularSlider.endPointValue = selectedHour
         updateHours()
     }
+    // Función que ajusta las horas del primer reloj
     @objc func adjustHours2() {
         let selectedHour = round(hoursCircularSlider2.endPointValue)
         hoursCircularSlider2.endPointValue = selectedHour
         updateHours()
     }
     
+    // Función que actualiza los minutos del primer reloj cuando el usuario interactua con el.
     @objc func updateMinutes() {
         var selectedMinute = Int(minutesCircularSlider.endPointValue)
         // TODO: use date formatter
         selectedMinute = (selectedMinute == 60 ? 0 : selectedMinute)
         minutesLabel.text = String(format: "%02d", selectedMinute)
     }
-    
+    // Función que actualiza los minutos del segundo reloj cuando el usuario interactua con el.
     @objc func updateMinutes2() {
         var selectedMinute = Int(minutesCircularSlider2.endPointValue)
         // TODO: use date formatter
@@ -178,17 +189,20 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
         minutesLabel2.text = String(format: "%02d", selectedMinute)
     }
     
+    // Función que ajusta los minutos del primer reloj
     @objc func adjustMinutes() {
         let selectedMinute = round(minutesCircularSlider.endPointValue)
         minutesCircularSlider.endPointValue = selectedMinute
         updateMinutes()
     }
+    // Función que ajusta los minutos del segundo reloj
     @objc func adjustMinutes2() {
         let selectedMinute = round(minutesCircularSlider2.endPointValue)
         minutesCircularSlider2.endPointValue = selectedMinute
         updateMinutes()
     }
     
+    // Función que hace una petición tipo post (FALSA) donde se mandan los datos de los tiempos obtenidos en los relojes
     func sendData(time:String)  {
         let url = URL(string:"http://0.0.0.0:8888/bienestar/public/api/")
         

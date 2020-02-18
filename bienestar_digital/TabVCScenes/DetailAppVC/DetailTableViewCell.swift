@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Clase para instanciar los outlets de la propia celda.
 class DetailTableViewCell: UITableViewCell {
 
     

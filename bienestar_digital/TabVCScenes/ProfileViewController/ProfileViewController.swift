@@ -11,6 +11,8 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var userName: UILabel!
+    
+    // Función que al cargar la vista setea el nombre del correspondiente usuario
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +22,7 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    // Función que cuando el boton es pulsado se envia de nuevo al usuario al login.
     @IBAction func logOut(_ sender: Any) {
         if let reset = (storyboard?.instantiateViewController(withIdentifier: "login"))
         {
@@ -29,7 +32,7 @@ class ProfileViewController: UIViewController {
         
     }
     
-    
+    // Función donde se hace un segue a la vista de recuperación de contraseña tras haber pulsado el botón
     @IBAction func segueReset(_ sender: Any) {
         if let reset = (storyboard?.instantiateViewController(withIdentifier: "reset"))
         {
@@ -38,12 +41,14 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    // Función donde se indica hacía donde irá dirigido el permorfSegue
     func segueLogin()  {
         performSegue(withIdentifier: "loginSegue", sender: nil)
     }
     
     @IBOutlet weak var notificationsOutlet: UISegmentedControl!
     
+    // Función donde indepedientemente del index que tenga el selector, te envía una alerta de permisos de notificaciones.
     @IBAction func notificationsSelector(_ sender: Any) {
         let contenido = UNMutableNotificationContent()
         contenido.title = "Notificaciones"
@@ -88,6 +93,7 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    // Función donde cada vez que la vista se ejecute se setea el correspondiente usuario
     override func viewWillAppear(_ animated: Bool) {
         for i in MockData.MockUpUser
         {

@@ -3,7 +3,7 @@
 import Foundation
 
 
-
+// Clase de estructuración de un usuario
 struct User: Codable {
     var id: Int?
     var email, userName, location, password,picture: String?

@@ -51,7 +51,7 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     
-    
+    // Variable global para poder acceder a ella desde los distintos Controllers
     struct GlobalVariable{
         static var appTotalUsage = [String: Double]()
     }
@@ -67,7 +67,7 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     
-    
+    // Función propia del tableView donde se hace un set de cada propiedad de las app.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = appTableView.dequeueReusableCell(withIdentifier: "AppCell") as? AppTableViewCell
         
@@ -135,6 +135,7 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell!
     }
     
+    // Función propia de tableView para indiciar el numero de lineas.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apps.count
     }
@@ -144,12 +145,12 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var appTableView: UITableView!
     
+    // Función en la cual se setea la bar de navigationController a hidden
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        
     }
     
+    // Función para enviar los datos a DetailAppViewController en la cual dependiendo de la app seleccionada enviará unos datos u otros.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let item = (sender as? AppTableViewCell)
         let indexPath = self.tableView.indexPath(for: item!)
@@ -189,6 +190,7 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    // Función que almacenara cada app del csv en arrays distintos dependiendo de sus eventos.
     func appDataWraper()
     {
         for i in appsCSV
@@ -259,6 +261,7 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    // Función que convierte los strings en un date de un formato en concreto
     func stringToDate()
     {
         let formateador = DateFormatter()
@@ -327,6 +330,7 @@ class AppTableViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
+    // Función que hace el sumatorio del intervalo entre cuando una aplicación se abre y su próximo cierre.
     func appDateSum()
     {
         for i in 0...appRelojOpensDate.count-1

@@ -2,12 +2,13 @@
 
 import Foundation
 import UIKit
-//Displays an alert with a message depending on the string passed through parameters
+
+
 class DataHelpers{
     
     static var path: URL? = URL(fileURLWithPath: "/Users/user/Desktop/data.csv" )
     
-    
+    // Función que muestra una alerta con un mensaje dependiendo del string que se le pase por parametros.
     static func displayAlert(userMessage:String, alertType: Int)->UIAlertController{
         let alertTitle: String
         
@@ -26,18 +27,19 @@ class DataHelpers{
         
     }
     
-    //
+    // Función que valida la el nombre de usuario devolviendo un bool
     static func isUsernameValid(_ username: String) -> Bool {
         return true
     }
     
-    //
+    // Función que valida el email devolviendo un bool
     static func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
+    // Función que valida el email fake de mockdata devolviendo un bool
     static func isValidEmailFake(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         
@@ -58,7 +60,7 @@ class DataHelpers{
         return emailPred.evaluate(with: emailToSend)
     }
     
-    //
+    // Función que valida la contraseña devolviendo un bool
     static func isValidPassword(_ password: String) -> Bool {
         let passRegEx = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
         
@@ -66,12 +68,12 @@ class DataHelpers{
         return passPred.evaluate(with: password)
     }
     
-    //
+    // Función que valida si la contraseña es repetida correctamene devolviendo un bool
     static func isValidRepeatedPassword(_ repeatedPassword: String , _ userPassword : String) -> Bool {
         return userPassword == repeatedPassword
     }
     
-        
+    // Función que parsea el CSV en un array de DataModel
     static func parseCsvData ()-> [DataModel] {
         var texto:String = " "
         do {
@@ -94,6 +96,7 @@ class DataHelpers{
            return result
        }
     
+    // Función que carga los datos del csv mediante una url
     static func loadFile() {
         do {
             let texto = try String(contentsOf: path!, encoding: .utf8)
@@ -106,6 +109,7 @@ class DataHelpers{
         
     }
     
+    // Función que se encarga de convertir el csv en un json
     static func JSONObjectFromTSV(tsvInputString:String, columnNames optionalColumnNames:[String]? = nil) -> Array<NSDictionary>
     {
       let lines = tsvInputString.components(separatedBy: "\n")
@@ -130,6 +134,7 @@ class DataHelpers{
       return result
     }
     
+    // Función que se encarga de convertir un Date a String
     static func toString(date:Date) -> String
     {
         let formateador = DateFormatter()
@@ -138,12 +143,14 @@ class DataHelpers{
         return fechaEnTexto
     }
     
+    // Función que se encarga de convertir los segundos en minutos
     static func secToMin(seconds:Double) -> Double
     {
         let secToMin = seconds / 60
         return secToMin
     }
     
+    // Función que se encarga de validar si el usuario completo es valido
     static func isValidUser(_ email: String, _ password: String) -> Bool {
         for i in MockData.MockUpUser
         {
@@ -154,10 +161,7 @@ class DataHelpers{
                 return true
             }
         }
-        
         return false
-        
-        
     }
     
     

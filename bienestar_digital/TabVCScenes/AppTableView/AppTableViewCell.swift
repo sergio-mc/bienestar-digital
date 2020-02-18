@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Clase para inicializar los outlets de la celda propia del TableView
 class AppTableViewCell: UITableViewCell {
 
     

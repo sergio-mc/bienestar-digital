@@ -24,7 +24,7 @@ class StatisticsViewController: UIViewController {
     var usageTimeApps = [PieChartDataEntry]()
     
     
-    
+    // Función que al cargar la vista setea unos valores default de la gráfica de estadísticas.
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,6 +51,7 @@ class StatisticsViewController: UIViewController {
         
     }
     
+    // Función encargada de actualizar los datos de la gráfica de estadísticas
     func updateChartData()
     {
         let chartDataSet = PieChartDataSet(entries: usageTimeApps, label:nil)
@@ -70,7 +71,7 @@ class StatisticsViewController: UIViewController {
         
     }
     
-    
+    // Función encargada de setear los datos (FALSOS) en la gráfica de estadísticas dependiendo del index del selector.
     @IBAction func rangeChange(_ sender: Any) {
         switch rangeSelector.selectedSegmentIndex {
         case 0:

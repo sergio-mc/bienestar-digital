@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Clase de como se va a guardar estructuradamente el CSV.
 struct DataModel: Codable{
     
     var Date: String

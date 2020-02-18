@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+// Clase para instanciar los outlets de la propia celda.
 class AppsCollectionViewControllerCell: UICollectionViewCell{
     
     
