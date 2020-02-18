@@ -11,6 +11,7 @@ pod 'HGCircularSlider', '~> 2.0.0'
   pod 'Alamofire', '~> 5.0.0-rc.3'
 pod 'GoogleMaps'
   pod 'GooglePlaces'
+pod 'Charts'
 
   target 'bienestar_digitalTests' do
     inherit! :search_paths

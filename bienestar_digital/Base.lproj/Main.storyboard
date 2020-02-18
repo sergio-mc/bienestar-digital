@@ -676,11 +676,58 @@
                     <view key="view" contentMode="scaleToFill" id="9Up-wg-snI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rango a mostrar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NI5-Jr-kmH">
+                                <rect key="frame" x="139.66666666666669" y="112" width="134.66666666666669" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OHm-mU-58w">
+                                <rect key="frame" x="93.666666666666671" y="141" width="226.66666666666663" height="32"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="Dias"/>
+                                    <segment title="Semanas"/>
+                                    <segment title="Meses"/>
+                                </segments>
+                                <connections>
+                                    <action selector="rangeChange:" destination="fkl-H2-v4b" eventType="valueChanged" id="dOd-KL-4E6"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Media de uso de cada App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAN-rg-y06">
+                                <rect key="frame" x="100.33333333333333" y="294" width="213.33333333333337" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Xa-Up-UIk" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="7" y="372" width="400" height="400"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5Xa-Up-UIk" firstAttribute="top" secondItem="9Up-wg-snI" secondAttribute="top" constant="372" id="4hN-0A-3ae"/>
+                            <constraint firstItem="5Xa-Up-UIk" firstAttribute="centerX" secondItem="9Up-wg-snI" secondAttribute="centerX" id="5ac-Lb-y15"/>
+                            <constraint firstItem="5Xa-Up-UIk" firstAttribute="leading" secondItem="aIX-K8-jew" secondAttribute="leading" constant="7" id="9iO-ar-L3b"/>
+                            <constraint firstItem="5Xa-Up-UIk" firstAttribute="top" secondItem="RAN-rg-y06" secondAttribute="bottom" constant="57" id="J7G-vV-Dbj"/>
+                            <constraint firstItem="OHm-mU-58w" firstAttribute="top" secondItem="NI5-Jr-kmH" secondAttribute="bottom" constant="8" id="O2E-u3-YIJ"/>
+                            <constraint firstItem="RAN-rg-y06" firstAttribute="centerX" secondItem="9Up-wg-snI" secondAttribute="centerX" id="ceQ-pf-uVU"/>
+                            <constraint firstItem="aIX-K8-jew" firstAttribute="bottom" secondItem="5Xa-Up-UIk" secondAttribute="bottom" constant="41" id="dk3-3l-XHr"/>
+                            <constraint firstItem="OHm-mU-58w" firstAttribute="leading" secondItem="aIX-K8-jew" secondAttribute="leading" constant="93.666666666666686" id="iWl-Fd-Rdz"/>
+                            <constraint firstItem="NI5-Jr-kmH" firstAttribute="centerX" secondItem="9Up-wg-snI" secondAttribute="centerX" id="lhp-Ft-yBv"/>
+                            <constraint firstItem="OHm-mU-58w" firstAttribute="centerX" secondItem="9Up-wg-snI" secondAttribute="centerX" id="pC4-iz-lhD"/>
+                            <constraint firstItem="OHm-mU-58w" firstAttribute="top" secondItem="9Up-wg-snI" secondAttribute="top" constant="141" id="xAq-EB-dPh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aIX-K8-jew"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Estadísticas" image="chart.bar" catalog="system" selectedImage="chart.bar.fill" id="KNp-uS-7wS"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="graphic" destination="5Xa-Up-UIk" id="lfJ-Zx-diM"/>
+                        <outlet property="rangeSelector" destination="OHm-mU-58w" id="WSE-8x-01C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dkx-ms-AmZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -66,7 +66,7 @@ class RecoverPageViewController: UIViewController,UITextFieldDelegate{
     }
     
     func sendEmail(email:String)  {
-        let url = URL(string:"http://0.0.0.0:8888/petit-api/public/api/user/password/reset")
+        let url = URL(string:"http://0.0.0.0:8888/bienestar/public/api/user/password/reset")
         AF.request(url!,
                    method: .post,
                    parameters:["email": email],

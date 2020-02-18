@@ -16,6 +16,7 @@
 		CE6A659423F77BB2003CF996 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A659323F77BB2003CF996 /* DetailTableViewCell.swift */; };
 		CE6A659623F8508C003CF996 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A659523F8508C003CF996 /* MockData.swift */; };
 		CE6A659823F85D98003CF996 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A659723F85D98003CF996 /* ProfileViewController.swift */; };
+		CE6A65AC23FBEE1A003CF996 /* appLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CE6A65AB23FBEE1A003CF996 /* appLogo.png */; };
 		CEA699C323DF73F6000FD870 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA699C223DF73F6000FD870 /* RegisterPageViewController.swift */; };
 		CEA699C523DF7439000FD870 /* RecoverPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA699C423DF7439000FD870 /* RecoverPageViewController.swift */; };
 		CEA699C723DF7471000FD870 /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA699C623DF7471000FD870 /* LoginPageViewController.swift */; };
@@ -69,6 +70,7 @@
 		CE6A659323F77BB2003CF996 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		CE6A659523F8508C003CF996 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		CE6A659723F85D98003CF996 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CE6A65AB23FBEE1A003CF996 /* appLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = appLogo.png; path = ../../../../Downloads/appLogo.png; sourceTree = "<group>"; };
 		CEA699C223DF73F6000FD870 /* RegisterPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		CEA699C423DF7439000FD870 /* RecoverPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPageViewController.swift; sourceTree = "<group>"; };
 		CEA699C623DF7471000FD870 /* LoginPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,130 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE6A659B23FAF92C003CF996 /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				CE6A65A423FAFB92003CF996 /* LoginVC */,
+				CE6A65A523FAFB9B003CF996 /* RegisterVC */,
+				CE6A65A623FAFBA2003CF996 /* RecoverVC */,
+			);
+			path = UserInterface;
+			sourceTree = "<group>";
+		};
+		CE6A659C23FAF977003CF996 /* TabVCScenes */ = {
+			isa = PBXGroup;
+			children = (
+				CE6A659E23FAFAC7003CF996 /* AppTableView */,
+				CE6A65A223FAFB36003CF996 /* DetailAppVC */,
+				CE6A659F23FAFAE3003CF996 /* AppCollectionView */,
+				CE6A65A023FAFB01003CF996 /* MapViewController */,
+				CE6A65A123FAFB16003CF996 /* StatisticsViewController */,
+				CE6A65A323FAFB45003CF996 /* ProfileViewController */,
+			);
+			path = TabVCScenes;
+			sourceTree = "<group>";
+		};
+		CE6A659D23FAFA5C003CF996 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				CE6A659523F8508C003CF996 /* MockData.swift */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
+		CE6A659E23FAFAC7003CF996 /* AppTableView */ = {
+			isa = PBXGroup;
+			children = (
+				CE0F370823E1FF9300D7189B /* AppTableViewCell.swift */,
+				CE0F370A23E2029600D7189B /* AppTableViewController.swift */,
+			);
+			path = AppTableView;
+			sourceTree = "<group>";
+		};
+		CE6A659F23FAFAE3003CF996 /* AppCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				CE0BDC1823EF476900BC69EB /* AppsCollectionViewController.swift */,
+				CE0BDC1A23EF47FE00BC69EB /* AppsCollectionViewControllerCell.swift */,
+			);
+			path = AppCollectionView;
+			sourceTree = "<group>";
+		};
+		CE6A65A023FAFB01003CF996 /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CECFAC9823F1E09C00FEEB89 /* MapViewController.swift */,
+			);
+			path = MapViewController;
+			sourceTree = "<group>";
+		};
+		CE6A65A123FAFB16003CF996 /* StatisticsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CECFAC9F23F2CF4800FEEB89 /* StatisticsViewController.swift */,
+			);
+			path = StatisticsViewController;
+			sourceTree = "<group>";
+		};
+		CE6A65A223FAFB36003CF996 /* DetailAppVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE6A659123F5C35A003CF996 /* DetailAppViewController.swift */,
+				CE6A659323F77BB2003CF996 /* DetailTableViewCell.swift */,
+			);
+			path = DetailAppVC;
+			sourceTree = "<group>";
+		};
+		CE6A65A323FAFB45003CF996 /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE6A659723F85D98003CF996 /* ProfileViewController.swift */,
+			);
+			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
+		CE6A65A423FAFB92003CF996 /* LoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				CEA699C623DF7471000FD870 /* LoginPageViewController.swift */,
+			);
+			path = LoginVC;
+			sourceTree = "<group>";
+		};
+		CE6A65A523FAFB9B003CF996 /* RegisterVC */ = {
+			isa = PBXGroup;
+			children = (
+				CEA699C223DF73F6000FD870 /* RegisterPageViewController.swift */,
+			);
+			path = RegisterVC;
+			sourceTree = "<group>";
+		};
+		CE6A65A623FAFBA2003CF996 /* RecoverVC */ = {
+			isa = PBXGroup;
+			children = (
+				CEA699C423DF7439000FD870 /* RecoverPageViewController.swift */,
+			);
+			path = RecoverVC;
+			sourceTree = "<group>";
+		};
+		CE6A65A723FAFBC0003CF996 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CECFACA523F320B500FEEB89 /* DataModel.swift */,
+				CEA699CA23DF7509000FD870 /* User.swift */,
+				CEA699CC23DF759E000FD870 /* Register.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE6A65A823FAFC0A003CF996 /* DataHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				CEA699C823DF74C0000FD870 /* DataHelpers.swift */,
+			);
+			path = DataHelpers;
+			sourceTree = "<group>";
+		};
 		CEBD6AD623A7DBDA004A0368 = {
 			isa = PBXGroup;
 			children = (
@@ -179,27 +305,16 @@
 				CEBD6AE423A7DBDA004A0368 /* SceneDelegate.swift */,
 				CEBD6AE623A7DBDA004A0368 /* ViewController.swift */,
 				CEBD6AE823A7DBDA004A0368 /* Main.storyboard */,
-				CEBD6AEB23A7DBDC004A0368 /* Assets.xcassets */,
 				CEBD6AED23A7DBDC004A0368 /* LaunchScreen.storyboard */,
-				CEBD6AF023A7DBDC004A0368 /* Info.plist */,
 				CECBAE3B23C734F700E24B98 /* UiViewController.swift */,
-				CEA699C223DF73F6000FD870 /* RegisterPageViewController.swift */,
-				CEA699C423DF7439000FD870 /* RecoverPageViewController.swift */,
-				CEA699C623DF7471000FD870 /* LoginPageViewController.swift */,
-				CEA699C823DF74C0000FD870 /* DataHelpers.swift */,
-				CEA699CA23DF7509000FD870 /* User.swift */,
-				CEA699CC23DF759E000FD870 /* Register.swift */,
-				CE0F370823E1FF9300D7189B /* AppTableViewCell.swift */,
-				CE0F370A23E2029600D7189B /* AppTableViewController.swift */,
-				CE0BDC1823EF476900BC69EB /* AppsCollectionViewController.swift */,
-				CE0BDC1A23EF47FE00BC69EB /* AppsCollectionViewControllerCell.swift */,
-				CECFAC9823F1E09C00FEEB89 /* MapViewController.swift */,
-				CECFAC9F23F2CF4800FEEB89 /* StatisticsViewController.swift */,
-				CECFACA523F320B500FEEB89 /* DataModel.swift */,
-				CE6A659123F5C35A003CF996 /* DetailAppViewController.swift */,
-				CE6A659323F77BB2003CF996 /* DetailTableViewCell.swift */,
-				CE6A659523F8508C003CF996 /* MockData.swift */,
-				CE6A659723F85D98003CF996 /* ProfileViewController.swift */,
+				CEBD6AF023A7DBDC004A0368 /* Info.plist */,
+				CEBD6AEB23A7DBDC004A0368 /* Assets.xcassets */,
+				CE6A65AB23FBEE1A003CF996 /* appLogo.png */,
+				CE6A659D23FAFA5C003CF996 /* MockData */,
+				CE6A659C23FAF977003CF996 /* TabVCScenes */,
+				CE6A659B23FAF92C003CF996 /* UserInterface */,
+				CE6A65A723FAFBC0003CF996 /* Models */,
+				CE6A65A823FAFC0A003CF996 /* DataHelpers */,
 			);
 			path = bienestar_digital;
 			sourceTree = "<group>";
@@ -333,6 +448,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6A65AC23FBEE1A003CF996 /* appLogo.png in Resources */,
 				CEBD6AEF23A7DBDC004A0368 /* LaunchScreen.storyboard in Resources */,
 				CEBD6AEC23A7DBDC004A0368 /* Assets.xcassets in Resources */,
 				CEBD6AEA23A7DBDA004A0368 /* Main.storyboard in Resources */,

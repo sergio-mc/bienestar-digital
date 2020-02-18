@@ -8,6 +8,7 @@
 
 import UIKit
 import HGCircularSlider
+import Alamofire
 
 class AppsCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
@@ -35,6 +36,7 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
     @IBOutlet weak var hoursLabel2: UILabel!
     
     @IBOutlet weak var selectedApp: UIImageView!
+    var selectedImage:String? = "Instagram"
     
     @IBOutlet weak var appCV: UICollectionView!
     @IBOutlet weak var dots: UILabel!
@@ -56,10 +58,20 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
     @IBAction func saveChanges(_ sender: Any) {
         switch selectorReference.selectedSegmentIndex {
         case 0:
-            print("Guardar datos diarios")
+            self.sendData(time: "App: \(selectedImage!) Tiempo diario establecido: \(hoursLabel.text!):\(minutesLabel.text!)")
             break
         case 1:
-            print("Guardar franja")
+            if let horasInt = Int(hoursLabel.text!),let horas2Int = Int(hoursLabel2.text!),let minutosInt = Int(minutesLabel.text!),let minutos2Int = Int(minutesLabel2.text!) {
+                if(horasInt < horas2Int){
+                    
+                    self.sendData(time: "App: \(selectedImage!) Tiempo franja establecido desde: \(hoursLabel.text!):\(minutesLabel.text!), hasta: \(hoursLabel2.text!):\(minutesLabel2.text!)")
+                }else if(horasInt == horas2Int && minutosInt < minutos2Int){
+                    self.sendData(time: "App: \(selectedImage!) Tiempo franja establecido desde: \(hoursLabel.text!):\(minutesLabel.text!), hasta: \(hoursLabel2.text!):\(minutesLabel2.text!)")
+                }else{
+                    self.present(DataHelpers.displayAlert(userMessage:"Tiempo del segundo reloj es menor que el primer reloj, no se ha podido crear franja.", alertType: 0), animated: true, completion: nil)
+                }
+            }
+            
             break
         default:
             break
@@ -73,14 +85,9 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
         self.appCV.delegate = self
         
         setupSliders()
-        
-        
-        
         DataHelpers.loadFile()
         appsCSV = DataHelpers.parseCsvData()
-        print(appsCSV)
-        
-        
+        selectedApp.image = UIImage.init(imageLiteralResourceName: selectedImage!)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -93,11 +100,11 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
         let imagen = apps[indexPath.item]
         cell.appImage.image = UIImage.init(imageLiteralResourceName: imagen)
         return cell
-        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedImage = apps[indexPath.row]
-        selectedApp.image = UIImage.init(imageLiteralResourceName: selectedImage)
+        selectedImage = apps[indexPath.row]
+        selectedApp.image = UIImage.init(imageLiteralResourceName: selectedImage!)
     }
     
     
@@ -180,6 +187,28 @@ class AppsCollectionViewController: UIViewController, UICollectionViewDataSource
         let selectedMinute = round(minutesCircularSlider2.endPointValue)
         minutesCircularSlider2.endPointValue = selectedMinute
         updateMinutes()
+    }
+    
+    func sendData(time:String)  {
+        let url = URL(string:"http://0.0.0.0:8888/bienestar/public/api/")
+        
+        
+        AF.request(url!,
+                   method: .post,
+                   parameters:time,
+                   encoder: JSONParameterEncoder.default
+            
+        ).response { response in
+            do{
+                let responseData:RegisterResponse = RegisterResponse(code: 500)
+                if(responseData.code==500) {
+                    print(time)
+                    self.present(DataHelpers.displayAlert(userMessage:"Restringido!", alertType: 1), animated: true, completion: nil)
+                }
+                
+            }
+        }
+        
     }
     
     

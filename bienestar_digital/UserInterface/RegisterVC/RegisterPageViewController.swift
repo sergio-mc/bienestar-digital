@@ -96,7 +96,7 @@ class RegisterPageViewController: UIViewController, UITextFieldDelegate {
         
     }
     func createUser(email:String,password:String,userName:String)  {
-        let url = URL(string:"http://0.0.0.0:8888/petit-api/public/api/")
+        let url = URL(string:"http://0.0.0.0:8888/bienestar/public/api/")
         let user=User( email: email, password: password, userName: userName)
         
         AF.request(url!,
